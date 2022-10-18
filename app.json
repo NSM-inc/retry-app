@@ -7,7 +7,7 @@
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "runtimeVersion": {
-      "policy": "nativeVersion"
+      "policy": "sdkVersion"
     },
     "jsEngine": "hermes",
     "extra": {
@@ -24,9 +24,7 @@
       "fallbackToCacheTimeout": 0,
       "url": "https://u.expo.dev/93b62e1c-2696-41b9-b375-2b836c1e8e7e"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.nsm.retryapp"
