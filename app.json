@@ -6,7 +6,10 @@
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
-    "runtimeVersion": { "policy": "nativeVersion" },
+    "runtimeVersion": {
+      "policy": "nativeVersion"
+    },
+    "jsEngine": "hermes",
     "extra": {
       "eas": {
         "projectId": "93b62e1c-2696-41b9-b375-2b836c1e8e7e"
@@ -21,7 +24,9 @@
       "fallbackToCacheTimeout": 0,
       "url": "https://u.expo.dev/93b62e1c-2696-41b9-b375-2b836c1e8e7e"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.nsm.retryapp"
@@ -32,7 +37,7 @@
         "backgroundColor": "#FFFFFF"
       },
       "package": "com.nsm.retryapp",
-      "versionCode": 2
+      "versionCode": 4
     },
     "web": {
       "favicon": "./assets/favicon.png"
