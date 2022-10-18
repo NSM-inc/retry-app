@@ -1,10 +1,10 @@
 #!/bin/bash
 
-read -p "Branch from(ex. main): " from
+read -p "Branch from(ex. development): " from
 read -p "Branch to(ex. preview)  : " to
 read -p "Version: " tag
 echo "----------------------------------------------
-Start merge '$from' into '$to' with '$tag' tag...
+Start merge '$from' into '$to' with '$tag' version...
 ----------------------------------------------"
 
 echo "⚙️ [1/4] Checking working git tree"
@@ -30,7 +30,7 @@ git reset --hard origin/$to -q
 echo "  ✅ Reset $to branch done"
 
 echo "⚙️ [4/4] Merging and Push ($from -> $to)"
-git merge --no-ff origin/$from -m "$tag (merged by script)" -q
+git merge --no-ff origin/$from -m "Ver: $tag (merged by script)" -q
 git push origin $to -q
 echo "  ✅ Merge & Push done"
 
