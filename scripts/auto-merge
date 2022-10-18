@@ -2,7 +2,7 @@
 
 read -p "Branch from(ex. development): " from
 read -p "Branch to(ex. preview)  : " to
-read -p "Version: " tag
+read -p "Version(ex. 1.0.3-fix1, only version): " tag
 echo "----------------------------------------------
 Start merge '$from' into '$to' with '$tag' version...
 ----------------------------------------------"
