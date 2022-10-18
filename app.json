@@ -7,6 +7,11 @@
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "runtimeVersion": { "policy": "nativeVersion" },
+    "extra": {
+      "eas": {
+        "projectId": "93b62e1c-2696-41b9-b375-2b836c1e8e7e"
+      }
+    },
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
