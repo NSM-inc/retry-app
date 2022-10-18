@@ -1,0 +1,37 @@
+#!/bin/bash
+
+read -p "Branch from(ex. main): " from
+read -p "Branch to(ex. preview)  : " to
+read -p "Version: " tag
+echo "----------------------------------------------
+Start merge '$from' into '$to' with '$tag' tag...
+----------------------------------------------"
+
+echo "⚙️ [1/4] Checking working git tree"
+if [[ $(git diff --stat) != "" ]]; then
+  read -p "You have some changes not to commit. SURE TO CONTINUE?(Y/n): " forceYn
+  if [[ $forceYn != "Y" ]]; then
+    echo "🚫 Aborted"
+    exit 0
+  fi
+else
+  echo "✅ Checked"
+fi
+
+echo "⚙️ [2/4] Fetching source"
+git fetch -p origin
+
+echo "⚙️ [3/4] Reset --hard both $from, $to working trees"
+git checkout $from -q
+git reset --hard origin/$from -q
+echo "  ✅ Reset $from branch done"
+git checkout $to -q
+git reset --hard origin/$to -q
+echo "  ✅ Reset $to branch done"
+
+echo "⚙️ [4/4] Merging and Push ($from -> $to)"
+git merge --no-ff origin/$from -m "$tag (merged by script)" -q
+git push origin $to -q
+echo "  ✅ Merge & Push done"
+
+echo -e "🍺 '$to' SHA: \033[32m$(git log --pretty=format:'%H' -n 1)"
