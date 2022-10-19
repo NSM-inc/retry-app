@@ -18,7 +18,14 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Text>Test</Text>
+      <Text>안녕</Text>
+      <Text>안녕</Text>
+      <Text>안녕</Text>
+      <Text>안녕</Text>
+      <Text>안녕</Text>
+      <Text>안녕</Text>
+      <Text>안녕</Text>
+      <Text>안녕</Text>
       <Text>{pkg.version}</Text>
       <StatusBar style='auto' />
     </View>
