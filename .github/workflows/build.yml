@@ -1,8 +1,6 @@
 name: EAS Build
 on:
-  push:
-    tag:
-      - '*'
+  workflow_dispatch:
 jobs:
   build:
     name: EAS Build
@@ -13,13 +11,16 @@ jobs:
         with:
           node-version: 16.x
           cache: npm
+      - name: Get branch names
+        id: branch-name
+        uses: tj-actions/branch-names@v6
       - name: Setup Expo and EAS
         uses: expo/expo-github-action@v7
         with:
-          expo-version: 5.x
+          expo-version: latest
           eas-version: latest
           token: ${{ secrets.EXPO_TOKEN }}
       - name: Install dependencies
-        run: npm ci
+        run: yarn install --immutable
       - name: Build on EAS
-        run: eas build --platform --profile=${GITHUB_REF##*/} android --non-interactive --no-wait
+        run: eas build --platform android --profile=${{ steps.branch-name.outputs.current_branch }} --non-interactive --no-wait
