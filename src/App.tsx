@@ -1,15 +1,18 @@
+import { registerRootComponent } from 'expo';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import * as pkg from './package.json';
 import * as Updates from 'expo-updates';
 import { useEffect } from 'react';
+import { StyleSheet, Text, View } from 'react-native';
 
-export default function App() {
+import * as pkg from '../package.json';
+
+function App() {
   useEffect(() => {
     async function checkUpdate() {
       const update = await Updates.checkForUpdateAsync();
       if (update?.isAvailable) {
         await Updates.fetchUpdateAsync();
+        await Updates.reloadAsync();
       }
     }
 
@@ -21,7 +24,7 @@ export default function App() {
       <Text>안녕</Text>
       <Text>안녕</Text>
       <Text>{pkg.version}</Text>
-      <StatusBar style='auto' />
+      <StatusBar style="auto" />
     </View>
   );
 }
@@ -34,3 +37,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+export default registerRootComponent(App);

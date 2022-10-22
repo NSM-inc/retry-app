@@ -1,13 +1,21 @@
 {
   "name": "retry-app",
   "version": "1.0.4",
-  "main": "node_modules/expo/AppEntry.js",
+  "main": "src/App.tsx",
   "scripts": {
+    "lint-staged": "lint-staged",
     "start": "expo start",
     "dev": "expo start --dev-client",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "web": "expo start --web"
+    "web": "expo start --web",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "src/**/*.{ts,tsx,js,jsx}": [
+      "eslint --ext .tsx --ext .ts --fix",
+      "prettier --write"
+    ]
   },
   "dependencies": {
     "expo": "~46.0.16",
@@ -23,7 +31,15 @@
     "@babel/core": "^7.12.9",
     "@types/react": "~18.0.14",
     "@types/react-native": "~0.69.1",
+    "eslint": "^8.26.0",
+    "eslint-config-universe": "^11.1.0",
+    "husky": "^8.0.0",
+    "lint-staged": "^13.0.3",
+    "prettier": "^2.7.1",
     "typescript": "~4.3.5"
   },
-  "private": true
+  "private": true,
+  "eslintConfig": {
+    "extends": "universe/native"
+  }
 }
