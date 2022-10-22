@@ -1,7 +1,8 @@
+import Test from 'components/Test';
 import { registerRootComponent } from 'expo';
 import { StatusBar } from 'expo-status-bar';
 import * as Updates from 'expo-updates';
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 import * as pkg from '../package.json';
@@ -21,8 +22,7 @@ function App() {
 
   return (
     <View style={styles.container}>
-      <Text>안녕</Text>
-      <Text>안녕</Text>
+      <Test />
       <Text>{pkg.version}</Text>
       <StatusBar style="auto" />
     </View>
