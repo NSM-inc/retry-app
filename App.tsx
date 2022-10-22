@@ -20,12 +20,6 @@ export default function App() {
     <View style={styles.container}>
       <Text>안녕</Text>
       <Text>안녕</Text>
-      <Text>안녕</Text>
-      <Text>안녕</Text>
-      <Text>안녕</Text>
-      <Text>안녕</Text>
-      <Text>안녕</Text>
-      <Text>안녕</Text>
       <Text>{pkg.version}</Text>
       <StatusBar style='auto' />
     </View>
