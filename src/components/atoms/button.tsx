@@ -1,26 +1,27 @@
-import { Text } from 'react-native';
+import { TouchableOpacityProps } from 'react-native';
 import { COLOR } from 'resources/constants';
 import styled from 'styled-components/native';
 import { layout, LayoutProps } from 'styled-system';
 
 interface ButtonProps {
-  designType?: 'yellow' | 'yellowReverse' | 'yellowPale';
+  designType: 'yellow' | 'yellowReverse' | 'yellowPale';
   sizeType?: 'small' | 'large';
+  title: string;
 }
 
 const design = {
-  yellow: `
-    background: ${COLOR.YELLOW_PC};
-    color: ${COLOR.YELLOW_OPC};
-  `,
-  yellowReverse: `
-    background: ${COLOR.YELLOW_OPC};
-    color: ${COLOR.YELLOW_PC};
-  `,
-  yellowPale: `
-    background: ${COLOR.YELLOW_PC};
-    color: ${COLOR.YELLOW_P};
-  `,
+  yellow: {
+    box: `background: ${COLOR.YELLOW_PC};`,
+    text: `color: ${COLOR.YELLOW_OPC}`,
+  },
+  yellowReverse: {
+    box: `background: ${COLOR.YELLOW_OPC};`,
+    text: `color: ${COLOR.YELLOW_PC}`,
+  },
+  yellowPale: {
+    box: `background: ${COLOR.YELLOW_PC};`,
+    text: `color: ${COLOR.YELLOW_P}`,
+  },
 };
 
 const size = {
@@ -33,24 +34,35 @@ const size = {
     min-width: 48px;
     height: 48px;
     border-radius: 12px;
+    font-size: 48px;
   `,
 };
 
-const Box = styled.TouchableOpacity<ButtonProps & LayoutProps>`
+const StyledTouchableOpacity = styled.TouchableOpacity<ButtonProps & LayoutProps>`
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0;
-  ${({ designType }) => designType && design[designType]}
+  ${({ designType }) => design[designType].box}
   ${({ sizeType }) => sizeType && size[sizeType]}
   ${layout}
 `;
 
-const Button = (props: ButtonProps) => {
+const StyledText = styled.Text<ButtonProps>`
+  font-weight: 700;
+  ${({ designType }) => design[designType].text}
+`;
+
+const Button = ({
+  designType,
+  sizeType,
+  title,
+  ...props
+}: ButtonProps & TouchableOpacityProps & LayoutProps) => {
   return (
-    <Box onPress={() => {}}>
-      <Text>Button</Text>
-    </Box>
+    <StyledTouchableOpacity designType={designType} sizeType={sizeType} {...props}>
+      <StyledText designType={designType}>{title}</StyledText>
+    </StyledTouchableOpacity>
   );
 };
 
