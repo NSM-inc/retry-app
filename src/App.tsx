@@ -1,4 +1,5 @@
 import Test from 'components/Test';
+import Button from 'components/atoms/button';
 import { registerRootComponent } from 'expo';
 import { StatusBar } from 'expo-status-bar';
 import * as Updates from 'expo-updates';
@@ -25,6 +26,7 @@ function App() {
       <Test />
       <Text>{pkg.version}</Text>
       <StatusBar style="auto" />
+      <Button />
     </View>
   );
 }
