@@ -1,9 +1,9 @@
-import Test from 'components/Test';
+import { Button, Text, View } from 'components/atoms';
 import { registerRootComponent } from 'expo';
 import { StatusBar } from 'expo-status-bar';
 import * as Updates from 'expo-updates';
 import React, { useEffect } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { COLOR } from 'resources/constants';
 
 import * as pkg from '../package.json';
 
@@ -21,21 +21,32 @@ function App() {
   }, []);
 
   return (
-    <View style={styles.container}>
-      <Test />
-      <Text>{pkg.version}</Text>
+    <View flex="1" backgroundColor="#fff" alignItems="center" justifyContent="center">
+      <Text color={COLOR.BLUE} fontSize="48px">
+        {pkg.version}
+      </Text>
       <StatusBar style="auto" />
+      <View flexDirection="row">
+        <Button
+          designType="yellow"
+          sizeType="large"
+          title="판매"
+          width="96px"
+          onPress={() => {
+            alert('click');
+          }}
+        />
+        <Button
+          designType="yellowReverse"
+          sizeType="large"
+          title="구매"
+          onPress={() => {
+            alert('click');
+          }}
+        />
+      </View>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
 
 export default registerRootComponent(App);
