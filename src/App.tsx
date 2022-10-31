@@ -21,7 +21,7 @@ function App() {
   }, []);
 
   return (
-    <View flex="1" backgroundColor="#fff" alignItems="center" justifyContent="center">
+    <View flex={1} backgroundColor="#fff" alignItems="center" justifyContent="center">
       <Text color={COLOR.BLUE} fontSize="48px">
         {pkg.version}
       </Text>
