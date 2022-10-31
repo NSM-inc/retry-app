@@ -10,22 +10,11 @@ import {
   SpaceProps,
 } from 'styled-system';
 
-interface ViewProps {
-  children?: React.ReactNode;
-}
-
-const StyledView = styled.View`
+const View = styled.View<LayoutProps & SpaceProps & ColorProps & FlexboxProps>`
   ${layout}
   ${space}
   ${color}
   ${flex}
 `;
-
-const View = ({
-  children,
-  ...props
-}: ViewProps & LayoutProps & SpaceProps & ColorProps & FlexboxProps) => {
-  return <StyledView {...props}>{children}</StyledView>;
-};
 
 export default View;

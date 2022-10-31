@@ -1,11 +1,12 @@
-import { Button, Text, View } from 'components/atoms';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { NavigationContainer } from '@react-navigation/native';
 import { registerRootComponent } from 'expo';
-import { StatusBar } from 'expo-status-bar';
 import * as Updates from 'expo-updates';
 import React, { useEffect } from 'react';
-import { COLOR } from 'resources/constants';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { HomeStack, SettingsScreen } from 'screens';
 
-import * as pkg from '../package.json';
+const Tab = createBottomTabNavigator();
 
 function App() {
   useEffect(() => {
@@ -21,31 +22,18 @@ function App() {
   }, []);
 
   return (
-    <View flex={1} backgroundColor="#fff" alignItems="center" justifyContent="center">
-      <Text color={COLOR.BLUE} fontSize="48px">
-        {pkg.version}
-      </Text>
-      <StatusBar style="auto" />
-      <View flexDirection="row">
-        <Button
-          designType="yellow"
-          sizeType="large"
-          title="판매"
-          width="96px"
-          onPress={() => {
-            alert('click');
-          }}
-        />
-        <Button
-          designType="yellowReverse"
-          sizeType="large"
-          title="구매"
-          onPress={() => {
-            alert('click');
-          }}
-        />
-      </View>
-    </View>
+    <SafeAreaProvider>
+      <NavigationContainer>
+        <Tab.Navigator>
+          <Tab.Screen name="HomeStack" options={{ title: '홈' }} component={HomeStack} />
+          <Tab.Screen
+            name="SettingsScreen"
+            options={{ title: '설정' }}
+            component={SettingsScreen}
+          />
+        </Tab.Navigator>
+      </NavigationContainer>
+    </SafeAreaProvider>
   );
 }
 
