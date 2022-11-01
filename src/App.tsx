@@ -1,4 +1,5 @@
 import { Button, Text, View } from 'components/atoms';
+import TextInput from 'components/atoms/TextInput';
 import { registerRootComponent } from 'expo';
 import { StatusBar } from 'expo-status-bar';
 import * as Updates from 'expo-updates';
@@ -45,6 +46,7 @@ function App() {
           }}
         />
       </View>
+      <TextInput designType="default" />
     </View>
   );
 }
