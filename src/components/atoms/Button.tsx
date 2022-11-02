@@ -1,7 +1,7 @@
 import { TouchableOpacityProps } from 'react-native';
 import { COLOR } from 'resources/constants';
 import styled from 'styled-components/native';
-import { layout, LayoutProps } from 'styled-system';
+import { layout, LayoutProps, space, SpaceProps } from 'styled-system';
 
 interface ButtonProps {
   designType: 'yellow' | 'yellowReverse' | 'yellowPale';
@@ -46,6 +46,7 @@ const StyledTouchableOpacity = styled.TouchableOpacity<ButtonProps & LayoutProps
   ${({ designType }) => design[designType].box}
   ${({ sizeType }) => sizeType && size[sizeType]}
   ${layout}
+  ${space}
 `;
 
 const StyledText = styled.Text<ButtonProps>`
@@ -58,7 +59,7 @@ const Button = ({
   sizeType,
   title,
   ...props
-}: ButtonProps & TouchableOpacityProps & LayoutProps) => {
+}: ButtonProps & TouchableOpacityProps & LayoutProps & SpaceProps) => {
   return (
     <StyledTouchableOpacity designType={designType} sizeType={sizeType} {...props}>
       <StyledText designType={designType}>{title}</StyledText>
