@@ -1,4 +1,5 @@
 import { Button, SafeView, View } from 'components/atoms';
+import { OutLineTextInput } from 'components/molecules';
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { COLOR } from 'resources/constants';
@@ -30,6 +31,9 @@ export default function Home() {
             alert('click');
           }}
         />
+      </View>
+      <View width="100%" padding={20}>
+        <OutLineTextInput label="전화번호" />
       </View>
     </SafeView>
   );

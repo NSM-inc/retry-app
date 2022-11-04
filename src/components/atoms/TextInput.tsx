@@ -1,22 +1,14 @@
 import styled from 'styled-components/native';
+import { ColorProps, LayoutProps, BorderProps, color, border, layout } from 'styled-system';
 
-interface TextInputProps {
-  designType: 'default';
-}
+export interface TextInputProps extends ColorProps, LayoutProps, BorderProps {}
 
-const design = {
-  default: {
-    'border-width': '1',
-    padding: '10px',
-  },
-};
-
-const StyledTextInput = styled.TextInput<TextInputProps>`
-  ${({ designType }) => design[designType]}
+const TextInput = styled.TextInput<TextInputProps>`
+  width: 100%;
+  height: 48px;
+  ${color}
+  ${layout}
+  ${border}
 `;
-
-const TextInput = ({ ...props }: TextInputProps) => {
-  return <StyledTextInput {...props}>테스트</StyledTextInput>;
-};
 
 export default TextInput;
