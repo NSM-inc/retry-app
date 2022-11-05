@@ -4,9 +4,9 @@ import styled from 'styled-components/native';
 import { layout, LayoutProps, space, SpaceProps } from 'styled-system';
 
 interface ButtonProps {
-  designType: 'yellow' | 'yellowReverse' | 'yellowPale';
+  designType?: 'yellow' | 'yellowReverse' | 'yellowPale';
   sizeType?: 'small' | 'large';
-  title: string;
+  children: React.ReactNode;
 }
 
 const design = {
@@ -38,12 +38,12 @@ const size = {
   `,
 };
 
-const StyledTouchableOpacity = styled.TouchableOpacity<ButtonProps & LayoutProps>`
+const StyledTouchableOpacity = styled.TouchableOpacity<ButtonProps & LayoutProps & SpaceProps>`
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0;
-  ${({ designType }) => design[designType].box}
+  ${({ designType }) => designType && design[designType].box}
   ${({ sizeType }) => sizeType && size[sizeType]}
   ${layout}
   ${space}
@@ -51,18 +51,18 @@ const StyledTouchableOpacity = styled.TouchableOpacity<ButtonProps & LayoutProps
 
 const StyledText = styled.Text<ButtonProps>`
   font-weight: 700;
-  ${({ designType }) => design[designType].text}
+  ${({ designType }) => designType && design[designType].text}
 `;
 
 const Button = ({
   designType,
   sizeType,
-  title,
+  children,
   ...props
 }: ButtonProps & TouchableOpacityProps & LayoutProps & SpaceProps) => {
   return (
     <StyledTouchableOpacity designType={designType} sizeType={sizeType} {...props}>
-      <StyledText designType={designType}>{title}</StyledText>
+      <StyledText designType={designType}>{children}</StyledText>
     </StyledTouchableOpacity>
   );
 };

@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
-import { color, TextColorProps, typography, TypographyProps } from 'styled-system';
+import { color, ColorProps, typography, TypographyProps } from 'styled-system';
 
-const Text = styled.Text<TypographyProps & TextColorProps>`
+const Text = styled.Text<TypographyProps & ColorProps>`
   ${typography}
   ${color}
 `;

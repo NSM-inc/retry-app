@@ -1,4 +1,5 @@
 import { Button, SafeView, View } from 'components/atoms';
+import Tag from 'components/molecules';
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { COLOR } from 'resources/constants';
@@ -13,23 +14,29 @@ export default function Home() {
         <Button
           designType="yellow"
           sizeType="large"
-          title="노란색"
           width="96px"
           marginBottom="12px"
           onPress={() => {
             setColor(COLOR.YELLOW_PC);
             alert('click');
-          }}
-        />
+          }}>
+          노란색
+        </Button>
         <Button
           designType="yellowReverse"
           sizeType="large"
-          title="갈색"
           onPress={() => {
             setColor(COLOR.YELLOW_OPC);
             alert('click');
-          }}
-        />
+          }}>
+          갈색
+        </Button>
+      </View>
+      <View marginTop="12px" flexDirection="row">
+        <Tag isDisable={false} marginRight="10px">
+          태그
+        </Tag>
+        <Tag isDisable>태그</Tag>
       </View>
     </SafeView>
   );
